@@ -1,0 +1,25 @@
+@font-face {
+    font-family: Roboto;
+    src: url(fonts/roboto/Roboto-Regular.ttf);
+    font-weight: normal;
+  }
+
+@font-face {
+    font-family: Roboto;
+    src: url(fonts/roboto/Roboto-Bold.ttf);
+    font-weight: bold;
+  }
+
+:root{
+    --white:#E8E5DA;
+    --transparent-white-for-text : #E8E5DAB2;
+    --white-for-blur: #E8E5DA40;
+    --bg-gradient: linear-gradient(#4a9b7f 0%, #0a3431 100%);
+    --discret-green: #4A9B7F26;
+}
+
+*{
+    font-family: 'Roboto';
+    margin:0;
+    padding: 0;
+}
