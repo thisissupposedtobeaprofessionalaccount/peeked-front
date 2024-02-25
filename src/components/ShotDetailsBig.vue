@@ -1,8 +1,7 @@
 <script setup>
 import ImageContainer from './ImageContainer.vue'
 import InfoContainer from './InfoContainer.vue'
-
-const props = defineProps({ imgUrl: String, time: String, date: String })
+defineProps({ imgUrl: String, time: String, date: String })
 </script>
 
 <template>

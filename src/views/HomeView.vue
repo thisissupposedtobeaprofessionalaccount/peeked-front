@@ -3,8 +3,8 @@ import ImageContainer from '@/components/ImageContainer.vue'
 import ShotDetails from '@/components/ShotDetails.vue'
 import ButtonImage from '@/components/ButtonImage.vue'
 import Header from '@/components/Header.vue'
-import { ref, watch } from 'vue'
-import { onBeforeMount, onMounted } from 'vue'
+import { ref } from 'vue'
+import { onMounted } from 'vue'
 
 const lastThreeImagesUrl = ref([])
 const lastImageDate = ref(getDateDisplay(new Date()))
@@ -19,22 +19,24 @@ function getHourDisplay(shotDate) {
 }
 
 function getDateDisplay(shotDate) {
+  console.log(shotDate.getDate())
   return (
-    shotDate.getDay().toString().padStart(2, '0') +
+    shotDate.getDate().toString().padStart(2, '0') +
     '/' +
     (shotDate.getMonth() + 1).toString().padStart(2, '0')
   )
 }
 
 onMounted(() => {
-  fetch('http://' + 'peeked-back:3010' + '/recent?n=3').then((res) => {
+  fetch('http://' + import.meta.env.VITE_BACKENDURL + '/recent?n=3').then((res) => {
     res.json().then((value) => {
       console.log('PROUTE')
       const date = new Date(Number(value[0].slice(0, -4)))
       lastImageDate.value = getHourDisplay(date)
       lastImageTime.value = getDateDisplay(date)
       value.forEach((element, index) => {
-        lastThreeImagesUrl.value[index] = 'http://' + 'localhost:3010' + '/gallery/' + element
+        lastThreeImagesUrl.value[index] =
+          'http://' + import.meta.env.VITE_BACKENDURL + '/gallery/' + element
       })
     })
   })
